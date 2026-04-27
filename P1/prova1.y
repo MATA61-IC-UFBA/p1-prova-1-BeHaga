@@ -10,6 +10,10 @@ void yyerror(const char *msg);
 %}
 
 %token ERROR
+%token NUM PLUS MINUS TIMES DIV ERROR
+
+%left PLUS MINUS
+%left TIMES DIV
 
 %start program
 
@@ -33,6 +37,13 @@ stmt
 
 expr
 /* completar */
+    : expr PLUS expr
+    | expr MINUS expr
+    | expr TIMES expr
+    | expr DIV expr
+    | '(' expr ')'
+    | NUM
+    ;
 
 %%
 
