@@ -27,12 +27,12 @@ int yylex();
 
 [ \t]+      { /* ignora espaços */ }
 
-"print"     { return PRINTT; }
+"print"     { return PRINT; }
 "if"                    { return IFT; }
 [a-zA-Z][a-zA-Z0-9_]*   { return ID; }
 "concat"        { return CONCAT; }
 "length"        { return LENGHT; }
-"[^\"\n]*\"     { yylval.sval = strdup(yytext); return STRING; }
+"[^\"\n]*\"     { return STRING; }
 "="                         { return ASSIGN; }
 "//".*                  { /* ignora comentários */ }
 ","                         { return ','; }
