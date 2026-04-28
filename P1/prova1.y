@@ -12,11 +12,9 @@ void yyerror(const char *msg);
 %token ERROR
 %token NUM PLUS MINUS TIMES DIV
 %token ID STRING
-%token PRINT IFT CONCAT LENGHT
+%token PRINT CONCAT LENGHT
 %token ASSIGN
 %token EOL
-%token IDENT
-%token LPAREN RPAREN
 
 %left CONCAT
 %left PLUS MINUS
@@ -38,9 +36,10 @@ stmt_list
 ;
 
 stmt
-: IDENT ASSIGN expr
-| PRINT LPAREN exprlist RPAREN
-| expr
+: ID ASSIGN expr ';'
+| PRINT '(' exprlist ')'
+| expr ';'
+| EOL
 ;
 
 exprlist
@@ -54,11 +53,10 @@ expr
     | expr MINUS expr
     | expr TIMES expr
     | expr DIV expr
-    | LPAREN expr RPAREN
+    | CONCAT '(' expr ')'
+    | LENGTH '(' expr ')'
     | '(' expr ')'
-    | NUM
-    | expr CONCAT expr                  
-    | LENGHT LPAREN expr RPAREN          
+    | NUM         
     | ID                                
     | STRING                            
     | MINUS expr %prec UMINUS
