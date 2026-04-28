@@ -13,32 +13,34 @@ int yylex();
 
 /* copiar E2 e fazer as extensões */
 
+"//".*                  { /* ignora comentários */ }
+
+"print"     { return PRINT; }
+"concat"        { return CONCAT; }
+"length"        { return LENGHT; }
+
 [0-9]+      { return NUM; }
+
+\"[^\"\n]*\"     { return STRING; }
+
+[a-zA-Z][a-zA-Z0-9_]*   { return IDENT; }
 
 "+"         { return PLUS; }
 "-"         { return MINUS; }
 "*"         { return TIMES; }
 "/"         { return DIV; }
 
-"("         { return '('; }
-")"         { return ')'; }
+"="         { return ASSIGN; }
+
+"("         { return LPAREN; }
+")"         { return RPAREN; }
+
+","         { return ','; }
+";"         { return ';'; }
 
 \n          { return EOL; }
 
-[ \t]+      { /* ignora espaços */ }
-
-"print"     { return PRINT; }
-"if"                    { return IFT; }
-[a-zA-Z][a-zA-Z0-9_]*   { return ID; }
-"concat"        { return CONCAT; }
-"length"        { return LENGHT; }
-"[^\"\n]*\"     { return STRING; }
-"="                         { return ASSIGN; }
-"//".*                  { /* ignora comentários */ }
-","                         { return ','; }
-";"                         { return ';'; }
-\n                          { return EOL; }
-[ \t]+                      { /* ignora espaços */ }
+[ \t\r]+      { /* ignora espaços */ }
 
 .            { return ERROR; }
 
