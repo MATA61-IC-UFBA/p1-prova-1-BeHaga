@@ -1,0 +1,5 @@
+// o erro pode ser detectado pelo sintatico
+// concat, length, print não podem ter lista de argumentos vazia
+
+concat()
+

@@ -1,0 +1,4 @@
+// o erro vai aparecer no semantico
+
+concat("abc")
+

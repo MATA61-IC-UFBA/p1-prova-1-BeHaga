@@ -1,0 +1,4 @@
+// test minus, atrib and print
+x = 10.0 - 4.2
+
+print(x)

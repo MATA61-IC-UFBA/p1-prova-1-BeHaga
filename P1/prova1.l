@@ -11,7 +11,12 @@ int yylex();
 
 %%
 
-/* copiar E2 e fazer as extensões */
+"//".*                  { /* ignora comentários */ }
+
+"print"     { return PRINT; }
+"if"                    { return IFT; }
+"concat"        { return CONCAT; }
+"length"        { return LENGTH; }
 
 "//".*                  { /* ignora comentários */ }
 
@@ -23,13 +28,18 @@ int yylex();
 
 \"[^\"\n]*\"     { return STRING; }
 
+<<<<<<< HEAD
 [a-zA-Z][a-zA-Z0-9_]*   { return IDENT; }
+=======
+[a-zA-Z][a-zA-Z0-9_]*   { return ID; }
+>>>>>>> a062a5f (consertando LENGHT -> LENGTH)
 
 "+"         { return PLUS; }
 "-"         { return MINUS; }
 "*"         { return TIMES; }
 "/"         { return DIV; }
 
+<<<<<<< HEAD
 "="         { return ASSIGN; }
 
 "("         { return LPAREN; }
@@ -37,10 +47,23 @@ int yylex();
 
 ","         { return ','; }
 ";"         { return ';'; }
+=======
+"="                         { return ASSIGN; }
+
+"("         { return '('; }
+")"         { return ')'; }
+>>>>>>> a062a5f (consertando LENGHT -> LENGTH)
+
+","                         { return ','; }
+";"                         { return ';'; }
 
 \n          { return EOL; }
 
+<<<<<<< HEAD
 [ \t\r]+      { /* ignora espaços */ }
+=======
+[ \t]+      { /* ignora espaços */ }
+>>>>>>> a062a5f (consertando LENGHT -> LENGTH)
 
 .            { return ERROR; }
 

@@ -1,0 +1,13 @@
+// nome completo e idade
+
+nome = "Joao"
+
+sobrenome = "Silva"
+
+nome_completo = concat(nome, " ", sobrenome)
+
+tamanho = length(nome_completo)
+
+print("cadeia: ", nome_completo, " e comprimento da cadeia: ", tamanho)
+
+
